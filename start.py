@@ -7,19 +7,20 @@ load_dotenv()
 TELEBOT_ID = os.getenv('TELEGRAMBOT')
 CMDCLASSIFY = os.getenv('CMDCLASSIFY')
 PATHCLASSIFY = os.getenv('PATHCLASSIFY')
+MESSAGE = os.getenv('MESSAGE')
 
 bot = telebot.TeleBot(TELEBOT_ID)
 
 @bot.message_handler(commands=['hello', 'help'])
 def send_welcome(message):
-	bot.reply_to(message, "Howdy, how are you doing? test")
+	bot.reply_to(message, MESSAGE)
 
-@bot.message_handler(commands=['CMDCLASSIFY'])
+@bot.message_handler(commands=[CMDCLASSIFY])
 def delete_file(message):
     deleteFile(), bot.reply_to(message, "Your file has been deleted"),
 
 def deleteFile():
-    folder = 'PATHCLASSIFY'
+    folder = PATHCLASSIFY
     for filename in os.listdir(folder):
         file_path = os.path.join(folder, filename)
     try:

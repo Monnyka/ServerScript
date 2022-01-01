@@ -19,7 +19,7 @@ def delete_file(message):
     deleteFile(), bot.reply_to(message, "Your file has been deleted"),
 
 def deleteFile():
-    folder = '/mnt/NASDrive/Classify'
+    folder = 'PATHCLASSIFY'
     for filename in os.listdir(folder):
         file_path = os.path.join(folder, filename)
     try:

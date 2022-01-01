@@ -1,14 +1,20 @@
 import telebot
 import os
 import shutil
+from dotenv import load_dotenv
 
-bot = telebot.TeleBot("1107438786:AAED_PIcm4FYHNX_zCLJBGDktDVpAvf7g5Q")
+load_dotenv()
+TELEBOT_ID = os.getenv('TELEGRAMBOT')
+CMDCLASSIFY = os.getenv('CMDCLASSIFY')
+PATHCLASSIFY = os.getenv('PATHCLASSIFY')
 
-@bot.message_handler(commands=['start', 'help'])
+bot = telebot.TeleBot(TELEBOT_ID)
+
+@bot.message_handler(commands=['hello', 'help'])
 def send_welcome(message):
-	bot.reply_to(message, "Howdy, how are you doing?")
+	bot.reply_to(message, "Howdy, how are you doing? test")
 
-@bot.message_handler(commands=['bkajuyovy'])
+@bot.message_handler(commands=['CMDCLASSIFY'])
 def delete_file(message):
     deleteFile(), bot.reply_to(message, "Your file has been deleted"),
 

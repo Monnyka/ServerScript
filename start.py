@@ -11,13 +11,16 @@ MESSAGE = os.getenv('MESSAGE')
 
 bot = telebot.TeleBot(TELEBOT_ID)
 
+
 @bot.message_handler(commands=['hello', 'help'])
 def send_welcome(message):
-	bot.reply_to(message, MESSAGE)
+    bot.reply_to(message, MESSAGE)
+
 
 @bot.message_handler(commands=[CMDCLASSIFY])
 def delete_file(message):
     deleteFile(), bot.reply_to(message, "Your file has been deleted"),
+
 
 def deleteFile():
     folder = PATHCLASSIFY
@@ -31,5 +34,6 @@ def deleteFile():
     except Exception as e:
         print('Failed to delete %s. Reason: %s' % (file_path, e))
         return
+
 
 bot.polling()
